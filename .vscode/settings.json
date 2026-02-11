@@ -1,4 +1,0 @@
-{
-  "python.defaultInterpreterPath": "/home/mczma/miniconda3/envs/sd-attn-clean/bin/python",
-  "python.analysis.extraPaths": ["./"]
-}
