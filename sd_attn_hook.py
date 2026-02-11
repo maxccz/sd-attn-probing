@@ -3,13 +3,13 @@ import numpy as np
 from diffusers import StableDiffusionPipeline
 
 MODEL_ID = "runwayml/stable-diffusion-v1-5"
-DEVICE = "cuda"  # assumes your GPU setup works
+DEVICE = "cuda"
 
 # Which word to inspect
 TARGET_TOKEN = "red"
 NUM_STEPS = 30
 
-
+# Function to register hooks on cross-attention layers
 def register_cross_attention_hooks(unet, store):
     """
     Attach forward hooks to all cross-attention modules in the UNet.
@@ -20,7 +20,7 @@ def register_cross_attention_hooks(unet, store):
             attn_probs = output
             store["attn"][name].append(attn_probs.detach().cpu())
         return hook
-
+    # Iterate over all modules in the UNet
     for name, module in unet.named_modules():
         if module.__class__.__name__ == "CrossAttention":
             store["attn"][name] = []
