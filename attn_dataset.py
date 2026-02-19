@@ -4,7 +4,6 @@ import numpy as np
 from diffusers import StableDiffusionPipeline
 from diffusers.models.attention import Attention
 from attn_recorder import RecordingAttnProcessor
-print("Diffusers version:", diffusers.__version__)
 
 # Function to register hooks on cross-attention layers
 def register_cross_attention_processors(unet, store):

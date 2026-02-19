@@ -2,7 +2,7 @@ from typing import Optional
 import torch
 from diffusers.models.attention import Attention 
 from diffusers.models.attention_processor import AttnProcessor
-from diffusers.models.utils import deprecate
+from diffusers.utils import deprecate
 
 class RecordingAttnProcessor(AttnProcessor):
     def __init__(self, store, name):
